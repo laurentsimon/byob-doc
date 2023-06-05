@@ -62,7 +62,7 @@ runs:
         content: ${{ fromJson(inputs.slsa-workflow-inputs).content }}
         username: ${{ fromJson(inputs.slsa-workflow-inputs).username }}
         password: ${{ inputs.slsa-workflow-secret1 }}
-        token: ${{ inputs.slsa-workflow-secret2 || github.token}}
+        token: ${{ inputs.slsa-workflow-secret2 || github.token }}
 
     - name: Generate layout file
       id: generate-layout
