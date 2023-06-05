@@ -55,8 +55,8 @@ runs:
         set -euo pipefail
 
         echo "${CONTENT}" > "${ARTIFACT}"
-        echo "Username:" > "${USERNAME}"
-        echo "Password:" > "${PASSWORD}"
+        echo "Username: ${USERNAME}"
+        echo "Password: "${PASSWORD}"
 
         # Set the outputs
         echo "name=${ARTIFACT}" >> "$GITHUB_OUTPUT"
