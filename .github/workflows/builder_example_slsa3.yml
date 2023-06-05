@@ -115,3 +115,6 @@ jobs:
     uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_lowperms-generic_slsa3.yml@main
     with:
       slsa-token: ${{ needs.slsa-setup.outputs.slsa-token }}
+    secrets:
+      secret1: ${{ inputs.password }}
+      secret2: ${{ inputs.token }}
