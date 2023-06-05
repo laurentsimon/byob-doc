@@ -66,19 +66,6 @@ on:
         description: "Status of the build"
         value: "${{ fromJSON(jobs.slsa-run.outputs.build-artifacts-outputs).status }}"
 
-      artifact-download-name:
-        description: "The name of the artifact uploaded to the workflow run."
-        value: ${{ fromJSON(jobs.slsa-run.outputs.build-artifacts-outputs).artifact-download-name }}
-
-      artifact-download-sha256:
-        description: "The sha256 of the artifact uploaded to the workflow run."
-        # NOTE: This is an "untrusted" value returned from the build.
-        value: ${{ fromJSON(jobs.slsa-run.outputs.build-artifacts-outputs).artifact-sha256 }}
-
-      provenance-name:
-        description: "The file name of the attestation upload artifact."
-        value: ${{ fromJSON(jobs.slsa-run.outputs.build-artifacts-outputs).attestation-name }}
-
       provenance-download-name:
         description: "The name of the provenance attestation uploaded to the workflow run."
         value: ${{ jobs.slsa-run.outputs.attestations-download-name }}
