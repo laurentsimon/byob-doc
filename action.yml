@@ -57,7 +57,7 @@ runs:
 
         echo "${CONTENT}" > "${ARTIFACT}"
         echo "Username: ${USERNAME}"
-        echo "Password: "${PASSWORD}"
+        echo "Password: ${PASSWORD}"
         echo "Token: ${TOKEN}"
 
         # Set the outputs
