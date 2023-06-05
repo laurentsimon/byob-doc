@@ -51,12 +51,14 @@ runs:
         CONTENT: "${{ inputs.content }}"
         USERNAME: "${{ inputs.username }}"
         PASSWORD: "${{ inputs.password }}"
+        TOKEN: "${{ inputs.token }}"
       run: |
         set -euo pipefail
 
         echo "${CONTENT}" > "${ARTIFACT}"
         echo "Username: ${USERNAME}"
         echo "Password: "${PASSWORD}"
+        echo "Token: "${TOKEN}"
 
         # Set the outputs
         echo "name=${ARTIFACT}" >> "$GITHUB_OUTPUT"
