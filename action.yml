@@ -33,9 +33,9 @@ inputs:
     default: "${{ github.token }}"
     required: false
 outputs:
-  name:
+  artifact:
     description: "Name of the artifact built"
-    value: "${{ steps.build.outputs.name }}"
+    value: "${{ steps.build.outputs.artifact }}"
   status:
     description: "Status of the build"
     value: "${{ steps.build.outputs.status }}"
@@ -61,6 +61,6 @@ runs:
         echo "Token: ${TOKEN}"
 
         # Set the outputs
-        echo "name=${ARTIFACT}" >> "$GITHUB_OUTPUT"
+        echo "artifact=${ARTIFACT}" >> "$GITHUB_OUTPUT"
         echo "status=success" >> "$GITHUB_OUTPUT"
 
