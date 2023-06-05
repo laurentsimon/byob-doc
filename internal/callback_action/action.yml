@@ -38,6 +38,14 @@ inputs:
   slsa-workflow-secret14: {}
   slsa-workflow-secret15: {}
 
+outputs:
+  artifact:
+    description: "Name of the artifact built"
+    value: "${{ steps.build.outputs.artifact }}"
+  status:
+    description: "Status of the build"
+    value: "${{ steps.build.outputs.status }}"
+
 runs:
   using: 'composite'
   steps:
@@ -48,6 +56,7 @@ runs:
     # if path is left empty, the Action's action.yml is located at the root of the repository.
     - name: Run main Action
       uses: ./../__TOOL_CHECKOUT_DIR__
+      id: build
       with:
         artifact: ${{ fromJson(inputs.slsa-workflow-inputs).artifact }}
         content: ${{ fromJson(inputs.slsa-workflow-inputs).content }}
