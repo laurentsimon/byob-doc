@@ -58,7 +58,7 @@ runs:
         echo "${CONTENT}" > "${ARTIFACT}"
         echo "Username: ${USERNAME}"
         echo "Password: "${PASSWORD}"
-        echo "Token: "${TOKEN}"
+        echo "Token: ${TOKEN}"
 
         # Set the outputs
         echo "name=${ARTIFACT}" >> "$GITHUB_OUTPUT"
