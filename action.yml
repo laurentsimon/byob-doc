@@ -64,16 +64,19 @@ runs:
         echo "artifact=${ARTIFACT}" >> "$GITHUB_OUTPUT"
         echo "status=success" >> "$GITHUB_OUTPUT"
 
-    - name: Upload artifacts
+    - name: Create folder to share
       shell: bash
-      if: startsWith(github.ref, 'refs/tags/')
       env:
-        REF: ${{ github.ref }}
         ARTIFACT: "${{ inputs.artifact }}"
-        GH_TOKEN: ${{ github.token }}
       run: |
         set -euo pipefail
 
-        tag="$(echo $REF | cut -d '/' -f3-)"
-        gh -R "$GITHUB_REPOSITORY" release upload "$tag" "$ARTIFACT"
+        mkdir artifacts
+        mv "${ARTIFACT}" artifacts/
+
+    - name: Share artifacts
+      uses: slsa-framework/slsa-github-generator/actions/delegator/secure-upload-folder@main
+      with:
+        name: artifacts
+        path: artifacts
 
