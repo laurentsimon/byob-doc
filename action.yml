@@ -74,5 +74,5 @@ runs:
         set -euo pipefail
 
         tag="$(echo $REF | cut -d '/' -f3-)"
-        gh -R "$GITHUB_REPOSITORY" release upload "$ARTIFACT" "$file"
+        gh -R "$GITHUB_REPOSITORY" release upload "$tag" "$ARTIFACT"
 
