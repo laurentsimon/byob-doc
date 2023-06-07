@@ -70,6 +70,7 @@ runs:
       env:
         REF: ${{ github.ref }}
         ARTIFACT: "${{ inputs.artifact }}"
+        GH_TOKEN: ${{ github.token }}
       run: |
         set -euo pipefail
 
