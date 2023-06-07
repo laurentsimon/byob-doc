@@ -97,8 +97,7 @@ jobs:
     needs: [slsa-setup]
     permissions:
       id-token: write # For signing.
-      contents: write # For asset uploads.
-      packages: write # For package uploads.
+      contents: read # For code access.
       actions: read # For the entrypoint.
     uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@v1.7.0
     with:
@@ -120,7 +119,7 @@ jobs:
           name: ${{ needs.slsa-run.outputs.attestations-download-name }}
           sha256: ${{ needs.slsa-run.outputs.attestations-download-sha256 }}
 
-      - name: Upload
+      - name: Upload provenance
         env:
           GH_TOKEN: ${{ github.token }}
           OUT: ${{ needs.slsa-run.outputs.attestations-download-name }}
@@ -139,3 +138,9 @@ jobs:
               file="$line"
               gh -R "$GITHUB_REPOSITORY" release upload "$tag" "$file"
           done < FILES
+
+      - name: Download artifacts
+        uses: slsa-framework/slsa-github-generator/actions/delegator/secure-download-folder@v1.7.0
+        with:
+          name: ${{ needs.slsa-run.outputs. }}
+          sha256: ${{ needs.slsa-run.outputs.attestations-download-sha256 }}
