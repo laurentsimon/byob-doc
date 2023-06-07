@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: build
-        uses: laurentsimon/byob-doc@main
+        uses: laurentsimon/byob-doc@v1.7.0
         with:
           artifact: "hello-world.bin"
           content: "hello world"
