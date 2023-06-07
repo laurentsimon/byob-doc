@@ -45,10 +45,10 @@ outputs:
   status:
     description: "Status of the build"
     value: "${{ steps.build.outputs.status }}"
-  artifact-name:
+  artifact-download-name:
     description: "Name of the artifact uploaded"
     value: "${{ steps.rng.outputs.random }}-artifacts"
-  artifact-sha256:
+  artifact-download-sha256:
     description: "SHA256 of the uploaded artifacts."
     value: "${{ steps.upload.outputs.sha256 }}"
 
