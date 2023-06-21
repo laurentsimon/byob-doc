@@ -25,7 +25,7 @@ jobs:
   build:
     permissions:
       id-token: write # For signing
-      contents: read # For asset release.
+      contents: write # For asset release.
       actions: read # For getting workflow run info.
     uses: laurentsimon/byob-doc/.github/workflows/builder_example_slsa3.yml@main
     with:
