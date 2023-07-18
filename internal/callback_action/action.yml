@@ -70,6 +70,14 @@ runs:
         password: ${{ inputs.slsa-workflow-secret1 }}
         token: ${{ inputs.slsa-workflow-secret2 || github.token }}
 
+    - name: Generate layout file
+      id: generate-layout
+      env:
+        SLSA_OUTPUTS_ARTIFACTS_FILE: ${{ inputs.slsa-layout-file }}
+        ARTIFACT: ${{ fromJson(inputs.slsa-workflow-inputs).artifact }}
+      shell: bash
+      run: ./../__TOOL_ACTION_DIR__/generate-layout.sh
+
     # We need a unique artifact name per workflow run, to avoid name collisions
     # when sharing artifacts, e.g. when multiple workflows run concurrently.
     - name: Create random value
@@ -96,11 +104,3 @@ runs:
       with:
         name: "${{ steps.rng.outputs.random }}-artifacts"
         path: artifacts
-
-    - name: Generate layout file
-      id: generate-layout
-      env:
-        SLSA_OUTPUTS_ARTIFACTS_FILE: ${{ inputs.slsa-layout-file }}
-        ARTIFACT: ${{ fromJson(inputs.slsa-workflow-inputs).artifact }}
-      shell: bash
-      run: ./../__TOOL_ACTION_DIR__/generate-layout.sh
